@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Offers</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%2300D632'/%3E%3Ccircle cx='16' cy='16' r='12' fill='%2300D632' stroke='%2300b82b' stroke-width='1'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Arial' font-size='14' font-weight='bold' fill='%23fff'%3E$%3C/text%3E%3C/svg%3E">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P5VNK77KX2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P5VNK77KX2');
+  </script>
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #000;
+      background: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-text-size-adjust: 100%;
+      border-top: 4px solid #00D632;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 28px 20px 48px;
+      max-width: 640px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Urgency bar */
+    .urgency-bar {
+      width: 100%;
+      background: #fff8e1;
+      border: 1px solid #ffe082;
+      border-radius: 6px;
+      padding: 9px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      font-size: 14px;
+      color: #795548;
+      font-weight: 600;
+    }
+
+    .urgency-bar .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #f44336;
+      animation: blink 1s infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+
+    /* Mobile first — a lot smaller */
+    .hero-img {
+      width: 50%;
+      max-width: 160px;
+      height: auto;
+      margin-bottom: 6px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      cursor: pointer;
+      transform-origin: center;
+      filter: drop-shadow(0 10px 22px rgba(0, 214, 50, 0.35))
+              drop-shadow(0 4px 8px rgba(0, 0, 0, 0.18));
+      animation: hero-tilt 4.2s ease-in-out infinite alternate;
+      will-change: transform;
+      transition: transform 0.2s ease;
+    }
+
+    .hero-img:hover {
+      animation-play-state: paused;
+      transform: scale(1.04) rotate(0deg);
+    }
+
+    @keyframes hero-tilt {
+      from { transform: rotate(-3deg); }
+      to   { transform: rotate(3deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-img { animation: none; }
+    }
+
+    /* Tablet */
+    @media (min-width: 480px) {
+      .hero-img {
+        width: 100%;
+        max-width: 220px;
+      }
+    }
+
+    /* Desktop */
+    @media (min-width: 601px) {
+      .hero-img {
+        max-width: 250px;
+      }
+    }
+
+    .heading {
+      font-size: 46px;
+      font-weight: 300;
+      text-align: center;
+      margin: 14px 0 18px;
+      letter-spacing: -0.5px;
+    }
+
+    .content-header {
+      text-align: center;
+      width: 100%;
+    }
+
+    .content-header .greeting {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .content-header .body-text {
+      font-size: 22px;
+      color: #333;
+      line-height: 1.35;
+      letter-spacing: 0.2px;
+    }
+
+    .content-header .body-text strong {
+      color: #000;
+      font-weight: 700;
+    }
+
+    /* Social proof */
+    .social-proof {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 18px;
+      font-size: 14px;
+      color: #555;
+      background: #f9fbe7;
+      border: 1px solid #dcedc8;
+      border-radius: 20px;
+      padding: 7px 16px;
+    }
+
+    .social-proof .avatars {
+      display: flex;
+    }
+
+    .social-proof .avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      margin-left: -8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #eee;
+    }
+
+    .social-proof .avatar:first-child { margin-left: 0; }
+
+    .social-proof .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .cta-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 26px;
+      gap: 10px;
+    }
+
+    .cta-button {
+      display: block;
+      width: 100%;
+      max-width: 380px;
+      padding: 22px 32px;
+      min-height: 60px;
+      background-color: #00D632;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(0, 214, 50, 0.45);
+      animation: pulse 2s infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-button::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: rgba(255,255,255,0.18);
+      transform: skewX(-20deg);
+      animation: shimmer 2.8s infinite;
+    }
+
+    @keyframes shimmer {
+      0%   { left: -60%; }
+      100% { left: 130%; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 4px 18px rgba(0, 214, 50, 0.45); }
+      50%       { box-shadow: 0 6px 28px rgba(0, 214, 50, 0.70); }
+    }
+
+    .cta-button:hover {
+      background-color: #00c02c;
+      animation: none;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(0, 214, 50, 0.55);
+      transition: all 0.15s ease;
+    }
+
+    .cta-button:active {
+      background-color: #00a826;
+      transform: translateY(0);
+    }
+
+    .cta-subtext {
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+    }
+
+    /* Slots remaining */
+    .slots-bar-wrap {
+      width: 100%;
+      max-width: 380px;
+      margin-top: 4px;
+    }
+
+    .slots-label {
+      font-size: 13px;
+      color: #c62828;
+      font-weight: 600;
+      margin-bottom: 5px;
+      text-align: center;
+    }
+
+    .slots-bar {
+      width: 100%;
+      height: 7px;
+      background: #eee;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .slots-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00D632, #00a826);
+      border-radius: 4px;
+      width: 18%;
+      transition: width 0.4s ease;
+    }
+
+    /* Trust badges */
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+    }
+
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #666;
+      font-size: 13px;
+    }
+
+    .trust-badge svg {
+      width: 16px;
+      height: 16px;
+      fill: #888;
+    }
+
+    /* Confetti overlay */
+    .confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #221e1f;
+      padding: 10px 0 30px;
+      width: 100%;
+    }
+
+    .footer-nav {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px 0;
+      gap: 12px 28px;
+    }
+
+    .footer-nav a {
+      color: #deddde;
+      font-size: 15px;
+      text-decoration: none;
+    }
+
+    .footer-nav a:hover {
+      color: #00D632;
+    }
+
+    .footer-copyright {
+      text-align: center;
+      padding: 20px 0 0;
+    }
+
+    .footer-copyright span {
+      display: block;
+      color: #deddde;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .footer-copyright .disclaimer {
+      font-size: 12px;
+      color: #a0a0a0;
+      max-width: 600px;
+      margin: 4px auto 0;
+      padding: 0 20px;
+    }
+
+    /* Focus styles */
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid #00D632;
+      outline-offset: 2px;
+    }
+
+    /* Desktop */
+    @media (min-width: 601px) {
+      .main {
+        padding: 42px 40px 64px;
+      }
+
+      .heading {
+        font-size: 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas class="confetti-canvas" id="confetti"></canvas>
+
+  <div class="main" role="main">
+
+    <!-- Live urgency bar -->
+    <div class="urgency-bar">
+      <span class="dot"></span>
+      <span>Offer expires in&nbsp;<strong id="countdown">04:59</strong>&nbsp;— Act now!</span>
+    </div>
+
+    <!-- Hero image (also a CTA link) -->
+    <a href="https://www.udt6zz3c.com/H6TP1W/23MWD6HH/?sub1=null&sub2=bb&sub3=null&sub5=null&sub10=null&sub4=null" id="lp-pom-image-165" target="_blank" rel="noopener">
+      <img src="Square_Cash_app.png" alt="$750 Cash App Gift" class="hero-img">
+    </a>
+
+    <div class="heading">You've Won!</div>
+
+    <div class="content-header">
+      <div class="greeting">Dear Visitor,</div>
+      <div class="body-text">
+        We would like to thank you for your loyalty and offer you a chance to get <strong>$750 to Your Cash App Account!</strong>
+      </div>
+    </div>
+
+    <!-- Social proof -->
+    <div class="social-proof">
+      <div class="avatars">
+        <div class="avatar"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User"></div>
+        <div class="avatar"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User"></div>
+        <div class="avatar"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User"></div>
+      </div>
+      <span><strong id="claimCount">348</strong> people claimed this today</span>
+    </div>
+
+    <div class="cta-wrapper">
+      <a href="https://www.udt6zz3c.com/H6TP1W/23MWD6HH/?sub1=null&sub2=bb&sub3=null&sub5=null&sub10=null&sub4=null" class="cta-button" id="lp-pom-button-164" target="_blank" rel="noopener" aria-label="Claim your $750 Cash App reward">
+        I Deserve This &#8594;
+      </a>
+      <div class="slots-bar-wrap">
+        <div class="slots-label">&#9888; Only <span id="slotsLeft">7</span> slots remaining today!</div>
+        <div class="slots-bar"><div class="slots-bar-fill" id="slotsBarFill"></div></div>
+      </div>
+      <div class="cta-subtext">Takes less than 60 seconds</div>
+    </div>
+
+    <div class="trust-badges">
+      <span class="trust-badge">
+        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg>
+        Secure &amp; Verified
+      </span>
+      <span class="trust-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+        Privacy Protected
+      </span>
+      <span class="trust-badge">
+        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        Limited Time Offer
+      </span>
+    </div>
+
+  </div>
+
+  <footer>
+    <ul class="footer-nav">
+      <li><a href="https://info.thecashmint.com/terms-conditions/" target="_blank" rel="noopener">Terms &amp; Conditions</a></li>
+      <li><a href="https://info.thecashmint.com/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a></li>
+      <li><a href="https://info.thecashmint.com/ccpa/" target="_blank" rel="noopener">CCPA</a></li>
+      <li><a href="https://info.thecashmint.com/contact/" target="_blank" rel="noopener">Contact Us</a></li>
+    </ul>
+    <div class="footer-copyright">
+      <span>&copy; 2026 TheCashMint.com</span>
+      <span class="disclaimer">TheCashMint is supported by its users. When you click links on our site, we may earn an affiliate commission. Trade names or rights associated with all brands on this site are the property of their respective owners and are not affiliated with this promotion.</span>
+    </div>
+  </footer>
+
+  <script>
+    // ── Confetti ──────────────────────────────────────────────────────────────
+    (function() {
+      const canvas = document.getElementById('confetti');
+      const ctx = canvas.getContext('2d');
+      const colors = ['#00D632','#ffd93d','#2196F3','#4d96ff','#ff922b','#cc5de8','#20c997','#f06595'];
+      const pieces = [];
+      const count = 90;
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      for (let i = 0; i < count; i++) {
+        pieces.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * -canvas.height,
+          w: Math.random() * 10 + 5,
+          h: Math.random() * 6 + 3,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          speed: Math.random() * 3 + 2,
+          drift: Math.random() * 2 - 1,
+          rot: Math.random() * 360,
+          rotSpeed: Math.random() * 6 - 3,
+          opacity: 1
+        });
+      }
+
+      let fade = false;
+      setTimeout(() => { fade = true; }, 1800);
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let alive = false;
+        pieces.forEach(p => {
+          if (p.opacity <= 0) return;
+          alive = true;
+          p.y += p.speed;
+          p.x += p.drift;
+          p.rot += p.rotSpeed;
+          if (fade) p.opacity -= 0.015;
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot * Math.PI / 180);
+          ctx.globalAlpha = Math.max(0, p.opacity);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
+        });
+        if (alive) requestAnimationFrame(draw);
+        else canvas.remove();
+      }
+      requestAnimationFrame(draw);
+    })();
+
+    // ── Countdown timer (5 min) ───────────────────────────────────────────────
+    (function() {
+      let total = 4 * 60 + 59;
+      const el = document.getElementById('countdown');
+      function tick() {
+        if (total <= 0) { el.textContent = '00:00'; return; }
+        const m = String(Math.floor(total / 60)).padStart(2, '0');
+        const s = String(total % 60).padStart(2, '0');
+        el.textContent = m + ':' + s;
+        total--;
+        setTimeout(tick, 1000);
+      }
+      tick();
+    })();
+
+    // ── Slots remaining counter (slowly decrements) ───────────────────────────
+    (function() {
+      let slots = 7;
+      const slotsEl = document.getElementById('slotsLeft');
+      const fillEl  = document.getElementById('slotsBarFill');
+      // Bar fill: 100% = 20 slots, so 7/20 = 35%
+      fillEl.style.width = Math.round((slots / 20) * 100) + '%';
+      const interval = setInterval(function() {
+        if (slots <= 1) { clearInterval(interval); return; }
+        const delay = 18000 + Math.random() * 22000; // 18-40s between drops
+        setTimeout(function() {
+          slots--;
+          slotsEl.textContent = slots;
+          fillEl.style.width = Math.round((slots / 20) * 100) + '%';
+        }, delay);
+      }, 25000);
+    })();
+
+    // ── Claim count ticker (increments slowly) ────────────────────────────────
+    (function() {
+      let count = 348;
+      const el = document.getElementById('claimCount');
+      function bump() {
+        count++;
+        el.textContent = count;
+        setTimeout(bump, 8000 + Math.random() * 14000);
+      }
+      setTimeout(bump, 6000);
+    })();
+  </script>
+
+  <script>
+    const config1 = {
+      allowedPubs: ['H6TP1W'],
+      defaultPub: 'H6TP1W',
+      defaultOptinPub: '461706',
+      thankyouUrl: "https://cashprize1.thecashmint.com/thank-you/a.html",
+      buttonIds: ["lp-pom-image-165", "lp-pom-button-164"],
+      sid: "23MWD6HH",
+      siteId: "64d152763bdcbe001387e56d",
+      tracking: "everflow"
+    };
+
+    if (typeof LinkHandler !== 'undefined') {
+      const linkHandler = new LinkHandler();
+      linkHandler.handlePage(config1);
+    }
+  </script>
+</body>
+</html>
